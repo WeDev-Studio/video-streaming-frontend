@@ -1,8 +1,17 @@
-export default function UploadPage() {
+"use client";
+
+import PageLayout from "@/components/layout/PageLayout";
+import UploadForm from "@/components/upload/UploadForm";
+
+const UploadPage = () => {
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold">Upload a Video</h1>
-      {/* Upload form and preview goes here */}
-    </main>
+    <PageLayout>
+      <div className="max-w-3xl mx-auto px-4 py-6 text-white">
+        <h1 className="text-2xl font-bold mb-4">Upload a Video</h1>
+        <UploadForm />
+      </div>
+    </PageLayout>
   );
-}
+};
+
+export default UploadPage;

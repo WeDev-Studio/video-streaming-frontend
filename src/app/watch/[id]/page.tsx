@@ -1,12 +1,13 @@
 "use client";
 
+import { use } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import VideoPlayer from "@/components/watch/VideoPlayer";
 import VideoMeta from "@/components/watch/VideoMeta";
 import VideoControls from "@/components/watch/VideoControls";
 
 interface WatchPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 // Dummy video for now
@@ -20,6 +21,8 @@ const dummyVideo = {
 };
 
 const WatchPage = ({ params }: WatchPageProps) => {
+  const { id } = use(params);
+
   return (
     <PageLayout>
       <div className="flex flex-col px-4 py-6 max-w-5xl mx-auto text-white">
@@ -31,7 +34,7 @@ const WatchPage = ({ params }: WatchPageProps) => {
         />
         <VideoControls />
         <p className="mt-4 text-sm text-gray-300 whitespace-pre-line">
-          {dummyVideo.description}
+          {dummyVideo.description} = {id}
         </p>
       </div>
     </PageLayout>
