@@ -16,6 +16,7 @@ const UploadForm = () => {
     formState: { errors },
     reset,
     setValue,
+    trigger,
   } = useForm<UploadFormData>();
 
   const [preview, setPreview] = useState<string | null>(null);
@@ -36,6 +37,10 @@ const UploadForm = () => {
     const file = e.target.files?.[0];
     if (file) {
       setPreview(URL.createObjectURL(file));
+      if (e.target.files) {
+        setValue("file", e.target.files); // update RHF value
+      }
+      trigger("file"); // re-trigger validation manually
     }
   };
 
